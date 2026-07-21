@@ -3,306 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maram Mezlini - CV Online</title>
+    <title>Maram Mezlini - Portfolio</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #2980b9;
-            --bg-color: #f4f7f6;
+            --primary: #1e293b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #333333;
-            --text-muted: #666666;
+            --text: #0f172a;
+            --text-muted: #64748b;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
-        }
+        header { background: var(--primary); color: white; padding: 60px 20px; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 0 auto 20px auto; }
+        
+        .contact-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .contact-links a { color: white; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .contact-links a:hover { background: var(--accent); }
 
-        .cv-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+        container { max-width: 1000px; margin: -30px auto 40px auto; padding: 0 20px; display: block; }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
+        .section { background: var(--card-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .section-title { font-size: 1.5rem; color: var(--primary); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
+        /* Grid Projets */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .project-card { border: 1fr solid #e2e8f0; border-radius: 8px; padding: 20px; background: #fff; border-left: 4px solid var(--accent); transition: transform 0.2s, box-shadow 0.2s; }
+        .project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .project-card h3 { color: var(--primary); margin-bottom: 8px; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .btn-link { display: inline-block; background: var(--accent); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        .btn-link:hover { background: var(--accent-hover); }
 
-        header h2 {
-            font-size: 1.1rem;
-            color: #3498db;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
+        /* Skills */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background: #eff6ff; color: var(--accent); padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
+        /* Experience & Education */
+        .timeline-item { margin-bottom: 15px; border-left: 2px solid #e2e8f0; padding-left: 15px; }
+        .timeline-item h4 { font-size: 1.1rem; }
+        .timeline-item .date { font-size: 0.85rem; color: var(--accent); font-weight: bold; }
 
-        .contact-info a {
-            color: #ecf0f1;
-            text-decoration: none;
-            background: rgba(255,255,255,0.1);
-            padding: 5px 12px;
-            border-radius: 15px;
-        }
-
-        .contact-info a:hover {
-            background: var(--accent-color);
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
-            padding: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .sidebar section, .content section {
-            margin-bottom: 25px;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .badge {
-            background: #eef2f7;
-            color: var(--primary-color);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .timeline-item {
-            margin-bottom: 20px;
-        }
-
-        .timeline-item h4 {
-            font-size: 1.05rem;
-            color: var(--primary-color);
-        }
-
-        .timeline-item .date {
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item p {
-            font-size: 0.95rem;
-            color: var(--text-color);
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-left: 4px solid var(--accent-color);
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .project-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .objective-box {
-            background: #eaf2f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--accent-color);
-            font-style: italic;
-        }
     </style>
 </head>
 <body>
 
-    <div class="cv-container">
-        <header>
-            <h1>MARAM MEZLINI</h1>
-            <h2>L3 Student - Electronics, Embedded Systems & Telecommunications (ESET)</h2>
-            <div class="contact-info">
-                <span>📍 Chambéry, France</span>
-                <a href="mailto:mezlini7maram@gmail.com">📧 mezlini7maram@gmail.com</a>
-                <a href="tel:+3374556450">📞 +33 7 45 56 45 0</a>
-            </div>
-        </header>
+    <header>
+        <h1>Maram Mezlini</h1>
+        <p>Étudiante en L3 Électronique, Systèmes Embarqués & Télécommunications (ESET)</p>
+        <div class="contact-links">
+            <a href="mailto:mezlini7maram@gmail.com">📧 Email</a>
+            <a href="tel:+3374556450">📞 Téléphone</a>
+            <span>📍 Chambéry, France</span>
+        </div>
+    </header>
 
-        <div class="main-content">
-            <!-- Colonne de gauche (Compétences, Langues, Intérêts) -->
-            <div class="sidebar">
-                <div class="objective-box">
-                    <strong>OBJECTIVE: WORK-STUDY</strong><br>
-                    Rigorous student passionate about communicating systems. Top of class in L1 and L2. Skilled in PCB design, IoT systems programming (LoRaWAN) and digital logic (VHDL/FPGA).
+    <container>
+        <!-- Section Projets Majeurs -->
+        <div class="section">
+            <h2 class="section-title">🚀 Projets Réalisés</h2>
+            <div class="projects-grid">
+                
+                <!-- Projet Stage L3 (À la une) -->
+                <div class="project-card" style="border-left-color: #10b981; background: #f0fdf4;">
+                    <span style="font-size: 0.8rem; background: #d1fae5; color: #047857; padding: 2px 8px; border-radius: 4px; font-weight: bold;">Stage de Recherche L3</span>
+                    <h3 style="margin-top: 8px;">IA Embarquée sur STM32 - Prédiction Météo</h3>
+                    <p>Développement et déploiement offline d'un modèle de Deep Learning (Keras/NN) sur microcontrôleur STM32 N657X0-Q au Mont Revard.</p>
+                    <a href="stage-l3.html" class="btn-link" style="background: #059669;">Découvrir le projet complet →</a>
                 </div>
 
-                <section>
-                    <h3 class="section-title">Technical Skills</h3>
-                    <ul>
-                        <li><strong>Electronics Design:</strong> PCB design (schematics & routing in KiCad), manufacturing, SMD/through-hole soldering.</li>
-                        <li><strong>Embedded Systems & IoT:</strong> C programming (Arduino, STM32), LoRaWAN protocol (LoRa-E5 module).</li>
-                        <li><strong>Digital Logic:</strong> VHDL modelling & programming, FPGA implementation.</li>
-                        <li><strong>Electronics & Energy:</strong> Digital circuit analysis, low-power optimization, sensor/actuator integration.</li>
-                        <li><strong>Software Dev:</strong> C language, SQL database management, Web dev (HTML, CSS, PHP, JavaScript).</li>
-                    </ul>
-                </section>
+                <!-- Projet Ruche Connectée -->
+                <div class="project-card">
+                    <h3>Ruche Connectée (L3)</h3>
+                    <p>Acquisition de masse (HX711) et température (DS18B20) avec transmission LoRaWAN (Module LoRa-E5) et routage PCB sur KiCad.</p>
+                </div>
 
-                <section>
-                    <h3 class="section-title">Software & Simulation</h3>
-                    <ul>
-                        <li><span class="badge">EDA/PCB</span> KiCad</li>
-                        <li><span class="badge">Computing</span> MATLAB, Scilab</li>
-                        <li><span class="badge">Simulation</span> LTspice</li>
-                    </ul>
-                </section>
+                <!-- Projet Robot Scanner -->
+                <div class="project-card">
+                    <h3>Robot Scanner de Pièce (L2)</h3>
+                    <p>Cartographie de périmètre et calcul de surface en temps réel via moteurs et capteurs ultrasons en langage C.</p>
+                </div>
 
-                <section>
-                    <h3 class="section-title">Languages</h3>
-                    <ul>
-                        <li><strong>English:</strong> C1 Level (Advanced/Fluent)</li>
-                        <li><strong>French:</strong> Fluent / Bilingual</li>
-                        <li><strong>Arabic:</strong> Native language</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3 class="section-title">Interests</h3>
-                    <ul>
-                        <li>🏀 <strong>Basketball:</strong> 3 years</li>
-                        <li>🎵 <strong>Music:</strong> 10 years practice</li>
-                        <li>🤝 <strong>Social Involvement:</strong> Volunteering & charity (Tunivisions, BILIAD)</li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- Colonne de droite (Parcours, Projets, Expériences) -->
-            <div class="content">
-                <section>
-                    <h3 class="section-title">Education</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="date">2025 - 2026</div>
-                        <h4>Bachelor's Year 3 Engineering Sciences (ESET)</h4>
-                        <p>USMB - Courses: Digital circuit engineering, low-power systems, energy conversion.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="date">2024 - 2025</div>
-                        <h4>Bachelor's Year 2 Engineering Sciences (ESET)</h4>
-                        <p>USMB - <strong>Ranking: Top of class.</strong></p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="date">2023 - 2024</div>
-                        <h4>Bachelor's Year 1 Engineering Sciences (MISPI)</h4>
-                        <p>USMB - <strong>Ranking: Top of class.</strong></p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="date">2023</div>
-                        <h4>French Baccalaureate</h4>
-                        <p>Specialisations: Mathematics, Physics-Chemistry and Life Sciences.</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h3 class="section-title">Key Projects</h3>
-                    
-                    <div class="project-card">
-                        <h4>Connected Beehive (L3 Project)</h4>
-                        <p>• <strong>Acquisition:</strong> Weight measurement (HX711) & temperature (DS18B20).</p>
-                        <p>• <strong>Transmission:</strong> Long-range communication via LoRaWAN (LoRa-E5 module).</p>
-                        <p>• <strong>Hardware:</strong> PCB routing in KiCad, soldering & functional testing.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h4>Room Scanner Robot (L2 Project)</h4>
-                        <p>Perimeter mapping and real-time area calculation. Motor and ultrasonic sensor control in C language.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h4>Web Development & Database (L1 Project)</h4>
-                        <p>Built a complete website with PHP backend development and complex SQL queries for dynamic display.</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h3 class="section-title">Experience</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="date">2025</div>
-                        <h4>Internship | CROMA Laboratory</h4>
-                        <p>Intelligent management of mobility and parking in low-density mountain heritage towns.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="date">Since 2025</div>
-                        <h4>Private Tutor | Annacours (Chambéry)</h4>
-                        <p>Providing pedagogy and academic support.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="date">2019 - 2024</div>
-                        <h4>Online & Academic Support</h4>
-                        <p>5 years of private tutoring experience.</p>
-                    </div>
-                </section>
             </div>
         </div>
-    </div>
+
+        <!-- Section Compétences -->
+        <div class="section">
+            <h2 class="section-title">⚡ Compétences Techniques</h2>
+            <div class="skills-list">
+                <span class="skill-tag">Conception PCB (KiCad)</span>
+                <span class="skill-tag">Systèmes Embarqués (STM32, Arduino)</span>
+                <span class="skill-tag">IoT & LoRaWAN</span>
+                <span class="skill-tag">IA & Deep Learning embarqué</span>
+                <span class="skill-tag">Programmation C / VHDL</span>
+                <span class="skill-tag">MATLAB / Scilab / LTspice</span>
+                <span class="skill-tag">Développement Web (HTML/CSS/PHP/SQL)</span>
+            </div>
+        </div>
+
+        <!-- Section Formation & Expériences -->
+        <div class="section">
+            <h2 class="section-title">🎓 Parcours & Expériences</h2>
+            
+            <div class="timeline-item">
+                <div class="date">2025</div>
+                <h4>Stage au Laboratoire CROMA</h4>
+                <p>Gestion intelligente de la mobilité et prédiction micro-climatique en milieu montagneux.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2023 - 2026</div>
+                <h4>Licence Sciences pour l'Ingénieur - ESET (USMB)</h4>
+                <p>Major de promotion en L1 et L2.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">Depuis 2019</div>
+                <h4>Enseignement & Soutien Scolaire</h4>
+                <p>Tuteur privé chez Annacours et cours en ligne (5 ans de pédagogie).</p>
+            </div>
+        </div>
+    </container>
 
 </body>
 </html>

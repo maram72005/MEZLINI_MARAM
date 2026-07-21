@@ -3,86 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Mon Site Personnel</title>
+    <title>Maram Mezlini - CV Online</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            background: #ffffff;
-            padding: 40px;
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 600px;
-            width: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 30px;
             text-align: center;
         }
-        h1 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
-            font-size: 2rem;
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
-        p.subtitle {
-            color: #666;
+
+        header h2 {
             font-size: 1.1rem;
-            margin-bottom: 25px;
+            color: #3498db;
+            font-weight: 400;
+            margin-bottom: 20px;
         }
-        .bio {
-            text-align: left;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-        .links {
+
+        .contact-info {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            font-size: 0.9rem;
         }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #0969da;
-            color: white;
+
+        .contact-info a {
+            color: #ecf0f1;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: background 0.2s;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
         }
-        .btn:hover {
-            background-color: #044289;
+
+        .contact-info a:hover {
+            background: var(--accent-color);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar section, .content section {
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            background: #eef2f7;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.05rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-item .date {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .project-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .objective-box {
+            background: #eaf2f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-color);
+            font-style: italic;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Bonjour, je suis [Votre Nom]</h1>
-        <p class="subtitle">Étudiant(e) / Développeur(se) / Passionné(e)</p>
+    <div class="cv-container">
+        <header>
+            <h1>MARAM MEZLINI</h1>
+            <h2>L3 Student - Electronics, Embedded Systems & Telecommunications (ESET)</h2>
+            <div class="contact-info">
+                <span>📍 Chambéry, France</span>
+                <a href="mailto:mezlini7maram@gmail.com">📧 mezlini7maram@gmail.com</a>
+                <a href="tel:+3374556450">📞 +33 7 45 56 45 0</a>
+            </div>
+        </header>
 
-        <div class="bio">
-            <p>Bienvenue sur mon site personnel hébergé sur GitHub Pages !</p>
-            <br>
-            <p>Je partage ici mes projets, mes compétences et mes centres d'intérêt.</p>
-        </div>
+        <div class="main-content">
+            <!-- Colonne de gauche (Compétences, Langues, Intérêts) -->
+            <div class="sidebar">
+                <div class="objective-box">
+                    <strong>OBJECTIVE: WORK-STUDY</strong><br>
+                    Rigorous student passionate about communicating systems. Top of class in L1 and L2. Skilled in PCB design, IoT systems programming (LoRaWAN) and digital logic (VHDL/FPGA).
+                </div>
 
-        <div class="links">
-            <a href="https://github.com" target="_blank" class="btn">Mon GitHub</a>
-            <a href="mailto:votre.email@exemple.com" class="btn">Me contacter</a>
+                <section>
+                    <h3 class="section-title">Technical Skills</h3>
+                    <ul>
+                        <li><strong>Electronics Design:</strong> PCB design (schematics & routing in KiCad), manufacturing, SMD/through-hole soldering.</li>
+                        <li><strong>Embedded Systems & IoT:</strong> C programming (Arduino, STM32), LoRaWAN protocol (LoRa-E5 module).</li>
+                        <li><strong>Digital Logic:</strong> VHDL modelling & programming, FPGA implementation.</li>
+                        <li><strong>Electronics & Energy:</strong> Digital circuit analysis, low-power optimization, sensor/actuator integration.</li>
+                        <li><strong>Software Dev:</strong> C language, SQL database management, Web dev (HTML, CSS, PHP, JavaScript).</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Software & Simulation</h3>
+                    <ul>
+                        <li><span class="badge">EDA/PCB</span> KiCad</li>
+                        <li><span class="badge">Computing</span> MATLAB, Scilab</li>
+                        <li><span class="badge">Simulation</span> LTspice</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Languages</h3>
+                    <ul>
+                        <li><strong>English:</strong> C1 Level (Advanced/Fluent)</li>
+                        <li><strong>French:</strong> Fluent / Bilingual</li>
+                        <li><strong>Arabic:</strong> Native language</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Interests</h3>
+                    <ul>
+                        <li>🏀 <strong>Basketball:</strong> 3 years</li>
+                        <li>🎵 <strong>Music:</strong> 10 years practice</li>
+                        <li>🤝 <strong>Social Involvement:</strong> Volunteering & charity (Tunivisions, BILIAD)</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Colonne de droite (Parcours, Projets, Expériences) -->
+            <div class="content">
+                <section>
+                    <h3 class="section-title">Education</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2025 - 2026</div>
+                        <h4>Bachelor's Year 3 Engineering Sciences (ESET)</h4>
+                        <p>USMB - Courses: Digital circuit engineering, low-power systems, energy conversion.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">2024 - 2025</div>
+                        <h4>Bachelor's Year 2 Engineering Sciences (ESET)</h4>
+                        <p>USMB - <strong>Ranking: Top of class.</strong></p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">2023 - 2024</div>
+                        <h4>Bachelor's Year 1 Engineering Sciences (MISPI)</h4>
+                        <p>USMB - <strong>Ranking: Top of class.</strong></p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">2023</div>
+                        <h4>French Baccalaureate</h4>
+                        <p>Specialisations: Mathematics, Physics-Chemistry and Life Sciences.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Key Projects</h3>
+                    
+                    <div class="project-card">
+                        <h4>Connected Beehive (L3 Project)</h4>
+                        <p>• <strong>Acquisition:</strong> Weight measurement (HX711) & temperature (DS18B20).</p>
+                        <p>• <strong>Transmission:</strong> Long-range communication via LoRaWAN (LoRa-E5 module).</p>
+                        <p>• <strong>Hardware:</strong> PCB routing in KiCad, soldering & functional testing.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>Room Scanner Robot (L2 Project)</h4>
+                        <p>Perimeter mapping and real-time area calculation. Motor and ultrasonic sensor control in C language.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>Web Development & Database (L1 Project)</h4>
+                        <p>Built a complete website with PHP backend development and complex SQL queries for dynamic display.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Experience</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2025</div>
+                        <h4>Internship | CROMA Laboratory</h4>
+                        <p>Intelligent management of mobility and parking in low-density mountain heritage towns.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">Since 2025</div>
+                        <h4>Private Tutor | Annacours (Chambéry)</h4>
+                        <p>Providing pedagogy and academic support.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">2019 - 2024</div>
+                        <h4>Online & Academic Support</h4>
+                        <p>5 years of private tutoring experience.</p>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 

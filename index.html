@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Mon Site Personnel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        p.subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        .bio {
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0969da;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background-color: #044289;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bonjour, je suis [Votre Nom]</h1>
+        <p class="subtitle">Étudiant(e) / Développeur(se) / Passionné(e)</p>
+
+        <div class="bio">
+            <p>Bienvenue sur mon site personnel hébergé sur GitHub Pages !</p>
+            <br>
+            <p>Je partage ici mes projets, mes compétences et mes centres d'intérêt.</p>
+        </div>
+
+        <div class="links">
+            <a href="https://github.com" target="_blank" class="btn">Mon GitHub</a>
+            <a href="mailto:votre.email@exemple.com" class="btn">Me contacter</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -26,6 +26,14 @@
         .authors { font-size: 0.95rem; color: #64748b; margin-bottom: 10px; }
         .tag { background: #d1fae5; color: #047857; padding: 4px 10px; border-radius: 12px; font-weight: bold; font-size: 0.85rem; }
 
+        /* Conteneur des boutons de documents */
+        .doc-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin: 20px 0; }
+        .btn { flex: 1; min-width: 200px; text-align: center; padding: 12px 20px; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background 0.2s ease; }
+        .btn-poster { background-color: #059669; }
+        .btn-poster:hover { background-color: #047857; }
+        .btn-rapport { background-color: #2563eb; }
+        .btn-rapport:hover { background-color: #1d4ed8; }
+
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
@@ -38,14 +46,9 @@
         .stat-highlight { text-align: center; background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #a7f3d0; }
         .stat-highlight .number { font-size: 2rem; font-weight: bold; color: var(--accent); }
 
-        footer-info { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 20px; text-align: center; }
+        footer { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 20px; text-align: center; }
     </style>
 </head>
-    <div style="text-align: center; margin: 20px 0;">
-    <a href="GdR SCO2 poster final.pdf" target="_blank" style="background-color: #059669; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
-        📄 Consulter le Poster Officiel (PDF)
-    </a>
-</div>
 <body>
 
     <div class="container">
@@ -56,6 +59,16 @@
             <h1 style="margin-top: 10px;">Intelligent Management of Mobility and Parking in Mountain Low-Density Heritage Cities</h1>
             <p class="authors"><strong>Auteurs :</strong> Maram Mezlini, Thierry Lacrevaz, Fernando Velez, Pietro M. Ferreira</p>
             <p style="font-style: italic;">Stage réalisé au Laboratoire CROMA (Centre de Radiofréquences, Optique et Micro-nanoélectronique des Alpes)</p>
+            
+            <!-- Boutons de téléchargement / consultation -->
+            <div class="doc-buttons">
+                <a href="GdR SCO2 poster final.pdf" target="_blank" class="btn btn-poster">
+                    📄 Consulter le Poster Officiel (PDF)
+                </a>
+                <a href="Rapport_Stage_L3_Maram_Mezlini.pdf" target="_blank" class="btn btn-rapport">
+                    📘 Consulter le Rapport de Stage (PDF)
+                </a>
+            </div>
         </header>
 
         <!-- Context & Hardware -->
@@ -106,9 +119,9 @@
             </div>
         </div>
 
-        <div class="footer-info">
+        <footer>
             Financé par UNITA Alliance (TALENT Starting Grant - DT115) • Université Savoie Mont Blanc (USMB)
-        </div>
+        </footer>
     </div>
 
 </body>

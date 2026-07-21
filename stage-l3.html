@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage L3 - IA Embarquée | Maram Mezlini</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #059669;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
+
+        .container { max-width: 900px; margin: 0 auto; background: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        .back-btn { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .back-btn:hover { text-decoration: underline; }
+
+        header { border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
+        .authors { font-size: 0.95rem; color: #64748b; margin-bottom: 10px; }
+        .tag { background: #d1fae5; color: #047857; padding: 4px 10px; border-radius: 12px; font-weight: bold; font-size: 0.85rem; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        .box { background: #f1f5f9; padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent); }
+        .box h3 { color: var(--primary); margin-bottom: 10px; }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+
+        .stat-highlight { text-align: center; background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #a7f3d0; }
+        .stat-highlight .number { font-size: 2rem; font-weight: bold; color: var(--accent); }
+
+        footer-info { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Retour au portfolio</a>
+
+        <header>
+            <span class="tag">TALENT Project - UNITA Alliance</span>
+            <h1 style="margin-top: 10px;">Intelligent Management of Mobility and Parking in Mountain Low-Density Heritage Cities</h1>
+            <p class="authors"><strong>Auteurs :</strong> Maram Mezlini, Thierry Lacrevaz, Fernando Velez, Pietro M. Ferreira</p>
+            <p style="font-style: italic;">Stage réalisé au Laboratoire CROMA (Centre de Radiofréquences, Optique et Micro-nanoélectronique des Alpes)</p>
+        </header>
+
+        <!-- Context & Hardware -->
+        <div class="grid">
+            <div class="box">
+                <h3>📍 Contexte & Objectif</h3>
+                <p>Les modèles météo classiques manquent de précision locale en montagne où le temps change très vite (ex: Mont Revard, 1500m). Les mauvaises connexions réseau empêchent la prédiction dans le cloud.</p>
+                <br>
+                <p><strong>Solution :</strong> Un système embarqué IA 100% autonome et offline capable de prédire le temps en temps réel directement sur le terrain.</p>
+            </div>
+
+            <div class="box">
+                <h3>🛠️ Matériel Utilisé</h3>
+                <ul>
+                    <li><strong>Puce :</strong> STM32 N657X0-Q (Cortex-M55 à 800 MHz)</li>
+                    <li><strong>NPU :</strong> ST Neural-ART Hardware Engine (600 GOPS)</li>
+                    <li><strong>Atout :</strong> Performance 600x supérieure aux microcontrôleurs classiques avec consommation ultra-faible.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Architecture du réseau de neurones -->
+        <div class="box" style="margin-bottom: 30px; background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid #2563eb;">
+            <h3 style="color: #2563eb;">🧠 Architecture du Réseau de Neurones (Keras NN V2)</h3>
+            <ul>
+                <li><strong>Input Layer (3 caractéristiques) :</strong> Température, Humidité, Pression (corrigée selon l'altitude).</li>
+                <li><strong>Hidden Layers (2 niveaux) :</strong> Couches cachées de 128 et 64 neurones pour le traitement intermédiaire.</li>
+                <li><strong>Output Layer :</strong> Classification binaire générant la probabilité finale (Ensoleillé / Pluie).</li>
+            </ul>
+        </div>
+
+        <!-- Résultats de test -->
+        <h2 style="color: var(--primary); margin-bottom: 15px;">📊 Résultats des Tests sur le Terrain</h2>
+
+        <div class="stat-highlight">
+            <div class="number">99.8%</div>
+            <div>Précision maximale atteinte en moins de 30 étapes d'apprentissage (Epochs)</div>
+        </div>
+
+        <div class="grid">
+            <div class="box" style="background: #fff; border: 1px solid #e2e8f0;">
+                <h4>1. Transition vers la Pluie (10h30 - 12h30)</h4>
+                <p>Chute soudaine de température et mouvement rapide des nuages. L'IA réagit immédiatement avec un pic de probabilité de pluie au-dessus du seuil de 50%.</p>
+            </div>
+            <div class="box" style="background: #fff; border: 1px solid #e2e8f0;">
+                <h4>2. Résistance au Brouillard (13h10 - 13h45)</h4>
+                <p>Même sous un brouillard extrême avec 100% d'humidité, l'IA filtre le bruit des capteurs et maintient une prédiction stable à 60%.</p>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            Financé par UNITA Alliance (TALENT Starting Grant - DT115) • Université Savoie Mont Blanc (USMB)
+        </div>
+    </div>
+
+</body>
+</html>
